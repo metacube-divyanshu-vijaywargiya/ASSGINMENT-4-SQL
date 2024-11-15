@@ -94,3 +94,24 @@ END //
 DELIMITER ;
 
 CALL get_order_details_by_date('2024-11-30','2024-11-16');
+
+
+-- Assignment 3 
+
+-- Identify the columns require indexing in order, product, category tables and create indexes.
+-- Answer
+-- 1. Orders Table
+-- Columns to Consider for Indexing:
+--     Foreign Key: user_id (to speed up lookups for orders by user)
+--     Date Column: OrderDate (to speed up queries filtering by date)
+
+-- 2. Product Table
+-- Columns to Consider for Indexing:
+--     Foreign Key: product_category_id (to speed up lookups for products by category)
+
+-- For Orders Table
+CREATE INDEX idx_user_id ON orders(user_id);
+CREATE INDEX idx_order_date ON orders(OrderDate);
+
+-- For the Product Table
+CREATE INDEX idx_product_category_id ON product(product_category_id);
